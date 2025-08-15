@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: gurugyan-registration
+    env: node
+    rootDir: .
+    buildCommand: ""
+    startCommand: node server.js
+    autoDeploy: true
+    plan: free
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: ADMIN_USER
+        value: "admin"
+      - key: ADMIN_PASS
+        value: "gg@123"
