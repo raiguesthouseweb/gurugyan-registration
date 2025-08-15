@@ -5,7 +5,6 @@ async function refreshCount(){
   try{
     const r = await fetch('/api/registration/count');
     const { total, max, isOpen } = await r.json();
-    $('#totalCount').textContent = total;
     const b = $('#stateBanner');
     b.classList.remove('hidden','open','closed');
     if(isOpen && (max===0 || total < max)){
