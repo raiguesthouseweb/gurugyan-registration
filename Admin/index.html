@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GuruGyan Registration Admin</title>
+  <link rel="stylesheet" href="/admin-styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>GuruGyan Registration Admin</h1>
+      <a class="btn" href="/">← Back to Site</a>
+    </header>
+
+    <section class="panel">
+      <label>Max Allowed
+        <input id="max" type="number" min="0" value="0" />
+      </label>
+      <label>Status
+        <select id="status">
+          <option value="open">Open</option>
+          <option value="closed">Closed</option>
+        </select>
+      </label>
+      <button id="saveCfg" class="btn primary">Save</button>
+      <button id="exportCsv" class="btn">Download CSV</button>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><div class="k">Total</div><div id="t" class="v">0</div></div>
+      <div class="stat"><div class="k">Remaining</div><div id="r" class="v">0</div></div>
+    </section>
+
+    <section>
+      <table class="tbl" id="tbl">
+        <thead>
+          <tr><th>#</th><th>Name</th><th>Last</th><th>Mobile</th><th>WhatsApp</th><th>Email</th><th>Created</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+  </div>
+  <script src="/admin-script.js"></script>
+</body>
+</html>

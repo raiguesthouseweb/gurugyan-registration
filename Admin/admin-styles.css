@@ -1,0 +1,16 @@
+:root{--bg:#0a0f18;--card:#0f1420;--text:#e6eaf2;--muted:#9aa4b2;--border:#2a3547;--cyan:#22d3ee}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui}
+.wrap{width:min(1100px,94%);margin:28px auto}
+header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.btn{padding:8px 12px;border:1px solid var(--border);border-radius:10px;color:var(--text);text-decoration:none;display:inline-flex;gap:8px}
+.btn.primary{background:linear-gradient(90deg,var(--cyan),#fb923c);color:#000;border:none}
+.panel{display:flex;gap:12px;flex-wrap:wrap;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:14px}
+.panel label{display:flex;flex-direction:column;gap:6px}
+.panel input,.panel select{background:transparent;border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px 10px;min-width:140px}
+.stats{display:flex;gap:18px;margin:12px 0}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.stat .k{color:var(--muted);font-size:12px}
+.stat .v{font-size:20px;font-weight:800}
+.tbl{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.tbl th,.tbl td{padding:10px 12px;border-bottom:1px solid var(--border);font-size:14px}
+.tbl thead th{background:#111826;text-align:left}

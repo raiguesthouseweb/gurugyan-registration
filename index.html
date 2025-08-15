@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GuruGyan – Early Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="icon" href="/rAi.png" />
+</head>
+<body>
+  <header class="site-header glass">
+    <div class="container header-inner">
+      <div class="brand"><span class="brand-g">G</span><span class="brand-orange">uru</span><span class="brand-g">G</span><span class="brand-orange">yan</span></div>
+      <a href="#form" class="btn primary">Get Early Access</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1 class="title">
+        <span class="title-line line1">World's First</span>
+        <span class="title-line line2">Cricket Prediction</span>
+        <span class="title-line line3">AI Model.</span>
+      </h1>
+      <p class="subtitle">Join the FREE TRIAL – Don’t Miss Out!</p>
+    </section>
+
+    <section id="form" class="card reg-card">
+      <h2>Fill your details</h2>
+      <div class="grid">
+        <label>
+          <span>Name</span>
+          <input id="firstName" type="text" placeholder="Name" required />
+        </label>
+        <label>
+          <span>Last Name</span>
+          <input id="lastName" type="text" placeholder="Last Name" required />
+        </label>
+        <label>
+          <span>Mobile Number</span>
+          <input id="mobile" type="tel" inputmode="numeric" maxlength="10" minlength="10" placeholder="Mobile Number 10 digits" required />
+        </label>
+        <label>
+          <span>WhatsApp Number</span>
+          <input id="whatsapp" type="tel" inputmode="numeric" maxlength="10" minlength="10" placeholder="WhatsApp Number 10 digits" required />
+        </label>
+        <label class="full">
+          <span>Email</span>
+          <input id="email" type="email" placeholder="you@example.com" required />
+        </label>
+      </div>
+    </section>
+
+    <div class="submit-wrap">
+      <button id="submitBtn" class="btn xl">Submit</button>
+    </div>
+
+    <section class="stats card">
+      <div class="stat-item">
+        <span class="stat-label">Total Registrations</span>
+        <span id="totalCount" class="stat-value">0</span>
+      </div>
+    </section>
+
+    <div id="stateBanner" class="banner hidden"></div>
+
+    <section class="about card">
+      <img src="/rAi.png" alt="GuruGyan" class="about-logo" />
+      <h3>About GuruGyan</h3>
+      <div id="aboutContent">
+        <p>🌍 <strong>World's First Genuine Sports Prediction Platform</strong><br>
+        Setting a global standard for accuracy, trust, and innovation. Guru Gyan transforms the way sports fans experience the game by delivering clear, dependable predictions that empower every decision.</p>
+        
+        <div id="expandedContent" class="expanded-content hidden">
+          <p>🎯 <strong>Proven Accuracy</strong><br>
+          With a tested accuracy rate of <strong>85%</strong>, Guru Gyan stands out in a market flooded with unreliable sources and clickbait. Our results speak for themselves — driven by precision, integrity, and consistency.</p>
+          
+          <p>🏆 <strong>Global Coverage</strong><br>
+          <strong>40+ Major Leagues & Tournaments</strong> including IPL, BBL, PSL, CPL, The Hundred, WBBL, ICC World Cups, and more.<br>
+          <strong>308 Domestic & International Teams</strong> from cricket giants like India, Australia, England, Pakistan to emerging nations like Namibia, Nepal, Malaysia, Uganda.</p>
+          
+          <p>💡 <strong>Why Choose Guru Gyan?</strong><br>
+          ✔ <strong>85% Tested Accuracy</strong> — Real results, no guesswork.<br>
+          ✔ <strong>Global Reach</strong> — Predictions across continents & formats.<br>
+          ✔ <strong>Data-Driven</strong> — Pure insights, no bias.<br>
+          ✔ <strong>Future-Ready</strong> — Evolving with AI-powered sports intelligence.</p>
+          
+          <p>🚀 <strong>The Road Ahead</strong><br>
+          We are expanding to cover more domestic tournaments worldwide and will soon launch <strong>Test match predictions</strong>, ensuring no format is left behind. Our commitment is to stay ahead with next-generation technology for sharper, faster, and more reliable predictions.</p>
+          
+          <p style="text-align: center; font-weight: bold; color: var(--cyan); margin-top: 20px;">Guru Gyan — Never Disappoint You.</p>
+        </div>
+        
+        <button id="readMoreBtn" class="btn read-more-btn">Read More</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="/rAi.png" alt="Rai" class="footer-logo" />
+      <div class="footer-brand"><span class="brand-g">G</span><span class="brand-orange">uru</span><span class="brand-g">G</span><span class="brand-orange">yan</span></div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
