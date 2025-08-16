@@ -1,50 +1,56 @@
-// Admin panel client script (safe config save)
 async function load() {
+  // counts & status
   const c = await (await fetch('/api/registration/count')).json();
-  const totalEl = document.getElementById('total');
-  const maxEl = document.getElementById('max');
-  const statusEl = document.getElementById('status');
+  document.getElementById('total').textContent = c.total;
+  const status = document.getElementById('status');
+  status.checked = !!c.isOpen;
+  document.getElementById('statusText').textContent = c.isOpen ? 'OPEN' : 'CLOSED';
 
-  totalEl.textContent = c.total;
-
-  // Show 'Unlimited' when max==0
-  maxEl.value = c.max > 0 ? c.max : 0;
-  document.getElementById('maxLabel').textContent = c.max > 0 ? c.max : 'Unlimited';
-
-  statusEl.checked = !!c.isOpen;
-
-  // table
-  const list = await (await fetch('/api/admin/registration/list')).json();
+  // list
+  const listRes = await fetch('/api/admin/registration/list', { credentials: 'include' });
+  if (!listRes.ok) {
+    document.querySelector('#regs tbody').innerHTML = `<tr><td colspan="5">Auth required. <a href="/admin-login?next=/admin/">Login</a></td></tr>`;
+    return;
+  }
+  const list = await listRes.json();
   const tbody = document.querySelector('#regs tbody');
   tbody.innerHTML = '';
+  if (!list.length) {
+    tbody.innerHTML = '<tr><td colspan="5">No registrations yet.</td></tr>';
+    return;
+  }
   for (const r of list) {
     const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${r.firstName} ${r.lastName}</td><td>${r.mobile}</td><td>${r.whatsapp}</td><td>${r.email}</td><td>${new Date(r.createdAt).toLocaleString()}</td>`;
+    const when = new Date(r.createdAt).toLocaleString();
+    tr.innerHTML =
+      `<td>${r.firstName} ${r.lastName}</td>` +
+      `<td>${r.mobile}</td>` +
+      `<td>${r.whatsapp}</td>` +
+      `<td>${r.email}</td>` +
+      `<td>${when}</td>`;
     tbody.appendChild(tr);
   }
 }
 
-async function saveCfg() {
-  const maxRaw = document.getElementById('max').value.trim();
+async function saveStatus() {
   const isOpen = document.getElementById('status').checked;
-
-  // Preserve previous when empty (do not force 0)
-  const payload = {};
-  if (maxRaw !== '') payload.max = Number(maxRaw);
-  payload.isOpen = isOpen;
-
   const res = await fetch('/api/admin/registration/config', {
     method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify(payload)
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify({ isOpen })
   });
   if (!res.ok) { alert('Save failed'); return; }
+  document.getElementById('statusText').textContent = isOpen ? 'OPEN' : 'CLOSED';
   await load();
-  alert('Saved');
+  alert('Status saved');
 }
 
 function bind() {
-  document.getElementById('saveBtn').addEventListener('click', saveCfg);
-  document.getElementById('exportBtn').addEventListener('click', ()=> location.href='/api/admin/registration/export.csv');
+  document.getElementById('saveBtn').addEventListener('click', saveStatus);
+  document.getElementById('status').addEventListener('change', () => {
+    document.getElementById('statusText').textContent = document.getElementById('status').checked ? 'OPEN' : 'CLOSED';
+  });
+  document.getElementById('exportBtn').addEventListener('click', () => location.href = '/api/admin/registration/export.csv');
 }
-window.addEventListener('DOMContentLoaded', ()=>{ bind(); load(); });
+window.addEventListener('DOMContentLoaded', () => { bind(); load(); });

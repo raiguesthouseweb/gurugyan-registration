@@ -1,46 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GuruGyan Registration Admin</title>
-  <link rel="stylesheet" href="/admin-styles.css" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>GuruGyan Admin</title>
+  <link rel="stylesheet" href="/admin-styles.css">
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <h1>GuruGyan Registration Admin</h1>
-      <a class="btn" href="/">← Back to Site</a>
-    </header>
+  <header class="topbar">
+    <h1>GuruGyan – Admin Panel</h1>
+    <nav><a href="/Free.Registration" target="_blank">Open Public Page</a></nav>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Registration Status</h2>
+      <div class="row">
+        <label class="switch">
+          <input type="checkbox" id="status">
+          <span class="slider"></span>
+        </label>
+        <span id="statusText" class="badge">Loading…</span>
+        <button id="saveBtn" class="btn primary">Save</button>
+        <button id="exportBtn" class="btn">Export CSV</button>
+        <a class="btn outline" href="/admin-login?next=/admin/" style="margin-left:auto">Re-login</a>
+      </div>
+      <p class="hint">Toggle karke registrations <b>Open/Close</b> karo. (Max limit feature removed)</p>
+      <div class="stats">
+        <div class="card"><div class="label">Total Registrations</div><div id="total" class="value">0</div></div>
+      </div>
+    </section>
 
     <section class="panel">
-      <label>Max Allowed
-        <input id="max" type="number" min="0" value="0" />
-      </label>
-      <label>Status
-        <select id="status">
-          <option value="open">Open</option>
-          <option value="closed">Closed</option>
-        </select>
-      </label>
-      <button id="saveCfg" class="btn primary">Save</button>
-      <button id="exportCsv" class="btn">Download CSV</button>
+      <h2>Latest Registrations</h2>
+      <div class="table-wrap">
+        <table id="regs">
+          <thead>
+            <tr><th>Name</th><th>Mobile</th><th>WhatsApp</th><th>Email</th><th>Time</th></tr>
+          </thead>
+          <tbody><tr><td colspan="5">Loading…</td></tr></tbody>
+        </table>
+      </div>
     </section>
+  </main>
 
-    <section class="stats">
-      <div class="stat"><div class="k">Total</div><div id="t" class="v">0</div></div>
-      <div class="stat"><div class="k">Remaining</div><div id="r" class="v">0</div></div>
-    </section>
-
-    <section>
-      <table class="tbl" id="tbl">
-        <thead>
-          <tr><th>#</th><th>Name</th><th>Last</th><th>Mobile</th><th>WhatsApp</th><th>Email</th><th>Created</th></tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </section>
-  </div>
   <script src="/admin-script.js"></script>
 </body>
 </html>
