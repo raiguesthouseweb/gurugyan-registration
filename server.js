@@ -150,4 +150,6 @@ const server = http.createServer((req,res)=>{
   send(res,404,'Not Found');
 });
 
-server.listen(PORT, ()=>console.log(`GuruGyan server running http://127.0.0.1:${PORT}`));
+server.listen(process.env.PORT || 5510, '0.0.0.0', () => {
+  console.log(`GuruGyan server running http://127.0.0.1:${process.env.PORT || 5510}`);
+});
